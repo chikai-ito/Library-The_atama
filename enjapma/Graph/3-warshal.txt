@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef long long ll;
+typedef pair<ll,ll> P;
+
+struct edge {ll from, to, cost; };
+
+edge es[3003];
+ll table[105][105];
+
+ll INF = 3e18;
+ll d[500005];
+ll n,m,k;
+ll a,b,c;
+ll i,j;
+
+int main(){
+	cin >> n >> m;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(i == j){
+				table[i][j] = 0;
+			}else{
+				table[i][j] = INF;
+			}
+		}
+	}
+	for(i=0;i<m;i++){
+		cin >> a >> b >> c;
+		table[a][b] = c;
+	}
+	for(k=0;k<n;k++){
+		for(i=0;i<n;i++){
+			for(j=0;j<n;j++){
+				if(table[i][k] + table[k][j] < table[i][j]){
+					if(table[i][k] == INF || table[k][j] == INF){
+						continue;
+					}
+					table[i][j] = table[i][k] + table[k][j];
+				}
+			}
+		}
+	}
+	for(i=0;i<n;i++){
+		if(table[i][i] < 0){
+			cout << "NEGATIVE CYCLE" << endl;
+			return 0;
+		}
+	}
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(table[i][j] == INF){
+				cout << "INF";
+				if(j != n - 1)cout << " ";
+			}else{
+				cout << table[i][j];
+				if(j != n - 1)cout << " ";
+			}
+		}
+		cout << endl;
+	}
+
+	return 0;
+}

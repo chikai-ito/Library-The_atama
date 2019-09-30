@@ -1,0 +1,42 @@
+p[500005],ran[500005];
+
+//–Ø‚Ìª‚Á‚±‚ğ‹‚ß‚é
+ll find(ll x){
+	if(p[x]==x){
+		return x;
+	}else{
+		return p[x] = find(p[x]);
+	}
+}
+
+//‚˜‚Æ‚™‚Ì‘®‚·‚éW‡‚ğ•¹‡
+void unite(ll x,ll y){
+	x = find(x);
+	y = find(y);
+	if(x==y)return;
+	if(ran[x]<ran[y]){
+		p[x]=y;
+	}else{
+		p[y]=x;
+		if(ran[x]==ran[y])ran[x]++;
+	}
+}
+
+int main(){
+	cin>>n>>m;
+	for(i=1;i<=n;i++){
+		cin>>q[i];
+		p[i]=i;
+	}
+	for(i=0;i<m;i++){
+		cin>>x>>y;
+		unite(x,y);
+	}
+	for(i=1;i<=n;i++){
+		if(find(i)==find(q[i])){
+			ans++;
+		}
+	}
+	p(ans);
+	return 0;
+}

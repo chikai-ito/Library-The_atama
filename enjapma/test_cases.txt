@@ -1,0 +1,10 @@
+void test_cases(ll a,ll b,ll c){
+    p(c);
+    for(ll i=0;i<c;i++){
+        ll num = rand();
+        num %= (b - a);
+        pe(num + a);
+    }
+    el;
+    return;
+}
