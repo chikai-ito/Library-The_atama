@@ -1,0 +1,10 @@
+for(j=1;j<(i<<ps.size());j++){
+			ll c=0,t=1;
+			for(k=0;k<ps.size();k++){
+				if(j & (1<<k)){
+					t *= ps[k];
+					c++;
+				}
+			}
+			ans[i]+=((c%2)*2-1)*cnt[t];
+		}

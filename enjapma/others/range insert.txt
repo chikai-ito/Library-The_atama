@@ -1,0 +1,40 @@
+bool solve(ll a){
+	//aˆÈ‰º‚Ì”‚ª‰½ŒÂ‚ ‚é‚©
+	ll num = 0;
+	for(ll i=0;i<n;i++){
+		if(a < x[i]){
+			num += 0;
+		}else if(y[i] <= a){
+			num += y[i] - x[i] + 1;
+		}else{
+			num += a - x[i] + 1;
+		}
+	}
+	if(k <= num){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
+int main(){
+    cin >> n >> k;
+	for(i=0;i<n;i++){
+		cin >> a >> b;
+		b = min(b,a+k);
+		for(j=a;j<=b;j++){
+			x[num] = j;
+			num ++;
+		}
+		p(num);
+	}
+	//p(num);
+	sort(x,x+num);
+	for(i=0;i<num;i++){
+		//pe(x[i]);
+	}
+	//el;
+	p(x[k-1]);
+    return 0;
+}

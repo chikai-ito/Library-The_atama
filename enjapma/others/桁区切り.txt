@@ -1,0 +1,27 @@
+//ÅãˆÊ‚Ì”‚ğ•Ô‚·ŠÖ”
+ll mostleft(ll n){
+	ll a = 1;
+	while(a * 10 <= n){
+		a *= 10;
+	}
+	return n/a;
+}
+//699@-> 100‚Ì‚æ‚¤‚ÉŠ„‚â‚·‚­‚·‚é”‚ğ—^‚¦‚éŠÖ”
+ll base(ll n){
+	ll a = 1;
+	while(a * 10 <= n){
+		a *= 10;
+	}
+	return a;
+}
+//Œ…”‚ğ•Ô‚· 100 -> 3, 1234 -> 4
+int digit(ll n){
+	ll a = 1;
+	ll b = 1;
+	while(a * 10 <= n){
+		a *= 10;
+		b++;
+	}
+	return b;
+}
+ 

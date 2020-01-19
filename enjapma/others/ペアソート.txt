@@ -1,0 +1,18 @@
+pair<int,int> stu[100005];
+cin>>stu[i].first;
+stu[i].second = i+1;
+
+sort(stu,stu+n);
+for(i=n-1;i>=0;i--){
+	cout << stu[i].second<<endl;
+}
+tuple<ll,ll,ll> table[200005];
+
+for(i=0;i<k;i++){
+        cin >> a >> b;
+        c = i;
+        get<0>(table[i]) = a;
+        get<1>(table[i]) = b;
+        get<2>(table[i]) = c;
+    }
+sort(table,table+k);

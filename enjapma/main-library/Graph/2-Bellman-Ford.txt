@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef long long ll;
+typedef pair<ll,ll> P;
+
+struct edge {ll from, to, cost; };
+
+edge es[3003];
+
+ll INF = 3e18;
+ll d[500005];
+ll n,m,k;
+ll a,b,c;
+ll i;
+
+int main(){
+	cin >> n >> m >> k;
+	for(i=0;i<m;i++){
+		cin >> a >> b >> c;
+		es[i].from = a;
+		es[i].to = b;
+		es[i].cost = c;
+	}
+	for(i=0;i<n;i++){
+		d[i] = INF;
+	}
+	d[k] = 0;
+	ll updatecount = 0;
+	while(true){
+		bool update = false;
+		for(int i=0;i<m;i++){
+			edge e = es[i];
+			if(d[e.from] != INF && d[e.to] > d[e.from] + e.cost){
+				d[e.to] = d[e.from] + e.cost;
+				update = true;
+			}
+		}
+		if(updatecount >= n + 3){
+			cout << "NEGATIVE CYCLE" << endl;
+			return 0;
+		}
+		if(!update)break;
+		updatecount++;
+	}
+	for(i=0;i<n;i++){
+		if(d[i] == INF){
+			cout << "INF" << endl;
+		}else{
+			cout << d[i] << endl;
+		}
+	}
+	return 0;
+}

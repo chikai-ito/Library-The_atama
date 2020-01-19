@@ -1,0 +1,11 @@
+E‡—ñ¶¬
+for(i=0;i<5;i++){
+	a[i]=i;
+}
+
+do{
+	for(i=0;i<5;i++){
+		cout<<a[i]<<" ";
+	}
+	cout<<endl;
+}while(next_permutation(a,a+5));

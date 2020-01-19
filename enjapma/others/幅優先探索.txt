@@ -1,0 +1,28 @@
+・迷路の幅優先探索
+int bfs(){
+	queue<P> que;
+	for(i=0;i<h;i++){
+		for(j=0;j<w;j++){
+			d[i][j]=INF;
+		}
+	}
+	que.push(P(0,0));
+	d[0][0]=0;
+	while(que.size()){
+		P p=que.front();
+		que.pop();
+		if(p.first == h-1 && p.second == w-1)break;
+
+		for(int i=0;i<4;i++){
+			int nx=p.first+dx[i];
+			int ny=p.second+dy[i];
+			if(0<=nx && nx<h && 0<=ny && ny<w && maze[nx][ny]!='#'&&d[nx][ny]==INF){
+				que.push(P(nx,ny));
+				//↓これ気を付けて
+				d[nx][ny]=d[p.first][p.second] +1;
+				//↑これ気を付けて
+			}
+		}
+	}
+	return d[h-1][w-1];
+}

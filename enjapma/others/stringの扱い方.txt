@@ -1,0 +1,19 @@
+string s,t;
+
+int main(){
+	cin>>n>>s>>t;
+	for(i=0;i<n;i++){
+		if(s.substr(i,n-i)==t.substr(0,n-i)){
+		//substr(a,b):a(0start)•¶Žš–Ú‚©‚çb•¶Žš
+			flag=true;
+			break;
+		}
+	}
+	if(!flag)i=n;
+	cout<<n+i<<endl;
+	
+	return 0;
+}
+
+//string‚É‘ã“ü
+t = "abcdefgh";
