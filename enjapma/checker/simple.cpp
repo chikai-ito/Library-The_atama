@@ -11,8 +11,7 @@ long long int INF = 3e18;
 const ll fact_table = 5000000;
 double Pi = 3.1415926535897932384626;
  
-//vector<ll> G[550010];
-vector<P> tree[500010];
+vector<P> G[550010];
 priority_queue <ll> pql;
 priority_queue <P> pqp;
 //big priority queue
@@ -39,24 +38,64 @@ char dir[] = "DRUL";
 //
 // write simple code which solve problem and print answer
 
-ll n, m, k, num, sum, ans, a, b, c, d, e, g, h, l, q, r;
-ll x[300000], y[500005], z[500005], w[500005];
-ll dp[1005][10];
+ll n, m, k, num, sum, ans, a, b, c, d, e, g, h, l, q, r, w, s;
+ll x[300000], y[500005], z[500005];
+ll table[500][500];
+
+ll gcd(ll number1,ll number2){
+ 
+    if(number1 > number2){
+        swap(number1,number2);
+    }
+    if(number1 == 0 || number1 == number2){
+        return number2;
+    }else{
+        return gcd(number2 % number1,number1);
+    }
+}
 
 int main(){
-	cin >> n >> m;
+    cin >> n;
     for(ll i=0;i<n;i++){
         cin >> x[i];
     }
-    for(ll i=0;i<m;i++){
-        cin >> a >> b;
-        G[a].pb(b);
-        G[b].pb(a)
-    }
-	return 0;
+    sort(x, x + n);
+    p(x[n - 1]);
+    return 0;
 }
- 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 
 #include <bits/stdc++.h>
 #include <unistd.h>
-#include <time.h>
+#include <sys/time.h>
 #include <stdlib.h>
  
 using namespace std;
@@ -59,9 +59,10 @@ ll c3(ll n,ll r){
 // initialize random
 
 void init(){
-	ll n;
-	cin >> n;
-	srand((unsigned) n);
+	struct timeval _time;
+	gettimeofday(&_time, NULL);
+	ll usec = _time.tv_usec * 1000000;
+	srand(usec);
 	return;
 }
 
@@ -72,14 +73,14 @@ ll range(ll a,ll b){
 }
 
 ll x[1000005], y[100005];
+bool dp[50][50];
 
 int main(){
 	init();
-	ll n = 7, k = 10;
-	pe(n);
-	p(k);
+	ll n = range(10, 16);
+	p(n);
 	for(ll i=0;i<n;i++){
-		ll a = range(3, 6);
+		ll a = range(1, 100);
 		pe(a);
 	}
 	el;
