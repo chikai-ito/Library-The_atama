@@ -15,7 +15,7 @@ public:
     vector<ll> base_pow;
 
     LLRollingHash(vector<ll> v, ll my_base, ll my_mod) {
-        ll idx = chrono::duration_cast<chrono::microseconds>(chrono::high_resolution_clock::now().time_since_epoch()).count();
+        ll idx = chrono::duration_cast<chrono::microseconds>(chrono::high_resolution_clock::now().time_since_epoch()).count() % 6;
         while(use_table[idx]){
             idx = (idx + 1) % 6;
         }
