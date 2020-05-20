@@ -11,8 +11,8 @@ namespace NTT {
     }
  
     for (ll i = 1; i < N; i *= 2) {
-      ll base = rui(root, (m - 1) / i / 2);
-      if (rev) base = rui(base, m - 2);
+      ll base = mypow(root, (m - 1) / i / 2, m);
+      if (rev) base = mypow(base, m - 2, m);
       ll w = 1;
       for (ll j = 0; j < i; j++) {
         for (ll k = 0; k < N; k += i*2) {
@@ -25,7 +25,7 @@ namespace NTT {
     }
  
     if (rev) {
-      ll tmp = rui(N, m-2);
+      ll tmp = mypow(N, m-2, m);
       for(ll &v : a) v = v * tmp % m;
     }
   }
