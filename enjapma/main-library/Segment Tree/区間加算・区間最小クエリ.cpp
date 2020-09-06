@@ -52,4 +52,45 @@ public:
         ll vr = find(a, b, 2*k+2, (l+r)/2, r);
         return min(vl, vr);
     }
+ 
+    ll find_leftest(int a, int b, ll x){
+        // [a, b) の中でx以下であるものの最左の位置を求める（存在しないならa-1）
+        return find_leftest_sub(a, b, x, 0, 0, n);
+    }
+
+    ll find_rightest(int a, int b, ll x){
+        return find_rightest_sub(a, b, x, 0, 0, n);
+    }
+ 
+    ll find_leftest_sub(int a, int b, ll x, int k, int l, int r) {
+        eval(k, l, r);
+        if (node[k] > x || r <= a || b <= l) {
+            return a - 1;
+        } else if (k >= n - 1) {
+            return (k - (n - 1));
+        } else {
+            ll vl = find_leftest_sub(a, b, x, 2 * k + 1, l, (l + r) / 2);
+            if (vl != a - 1) {
+                return vl;
+            } else {
+                return find_leftest_sub(a, b, x, 2 * k + 2, (l + r) / 2, r);
+            }
+        }
+    }
+
+    ll find_rightest_sub(int a, int b, ll x, int k, int l, int r) {
+        eval(k, l, r);
+        if (node[k] > x || r <= a || b <= l) {
+            return a - 1;
+        } else if (k >= n - 1) {
+            return (k - (n - 1));
+        } else {
+            ll vr = find_rightest_sub(a, b, x, 2*k+2, (l+r)/2, r);
+            if (vr != a - 1) {
+                return vr;
+            } else {
+                return find_rightest_sub(a, b, x, 2*k+1, l, (l+r)/2);
+            }
+        }
+    }
 };
