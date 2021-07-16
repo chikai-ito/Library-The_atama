@@ -5,7 +5,6 @@ using namespace std;
 typedef long long ll;
 
 ll parent[500005], sizes[500005];
-
 void init(ll n){
 	for(ll i=0;i<=n;i++){
 		parent[i] = i;
@@ -18,7 +17,6 @@ ll find(ll x){
 		return parent[x] = find(parent[x]);
 	}
 }
-
 void unite(ll x,ll y){
 	x = find(x);
 	y = find(y);
@@ -28,15 +26,12 @@ void unite(ll x,ll y){
 	parent[y] = x;
 	sizes[x] += sizes[y];
 }
-
 bool same(ll x,ll y){
 	return find(x) == find(y);
 }
-
 ll size(ll x){
 	return sizes[find(x)];
 }
-
 int main(){
 	ll n, q;
 	cin >> n >> q;

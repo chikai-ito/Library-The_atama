@@ -1,0 +1,15 @@
+if(SUM(a) != SUM(b)) {
+            cout << "IMPOSSIBLE" << endl;
+            continue;
+        }
+        bool flag = true;
+        rep(i, n) {
+            vpi w;
+            rep(j, m) w.eb(b[j], j);
+            sort(all(w), greater{});
+            rep(k, a[i]) {
+                v[i][w[k].se] = 1;
+                b[w[k].se]--;
+                if(b[w[k].se] < 0) flag = false;
+            }
+        }
